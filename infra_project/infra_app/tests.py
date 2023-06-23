@@ -8,15 +8,15 @@ class StaticPagesURLTests(TestCase):
         self.guest_client = Client()
 
     def test_about_url_exists_at_desired_location(self):
-        response = self.guest_client.get('/')
+        response = self.guest_client.get("/")
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
-        response = self.guest_client.get('/second_page/')
+        response = self.guest_client.get("/second_page/")
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
     def test_page_shows_correct_content(self):
-        response = self.guest_client.get('/')
-        self.assertContains(response, 'Работает и ладно')
+        response = self.guest_client.get("/")
+        self.assertContains(response, "Работает и ладно")
 
-        response = self.guest_client.get('/second_page/')
-        self.assertContains(response, 'дубль 2')
+        response = self.guest_client.get("/second_page/")
+        self.assertContains(response, "дубль 2")
